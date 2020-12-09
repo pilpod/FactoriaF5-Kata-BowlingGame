@@ -8,31 +8,43 @@ class BowlingGame {
     private int $scoreResult;
     private int $scoreCurrent;
     private int $ballCount;
+    private string $flag;
 
     public function __construct()
     {
         $this->pinsPerBall = 0;
         $this->scoreResult = 0;
         $this->scoreCurrent = 0;
-        $this->ballCount = 0; 
+        $this->ballCount = 0;
+        $this->flag = '';
     }
 
     public function roll(int $pinsDown): void
-    {
+    {   
         $this->ballCount++;
         $this->pinsPerBall += $pinsDown;
         
-        if($this->ballCount == 2 && $this->pinsPerBall < 10) {
+        if($this->pinsPerBall < 10 && $this->ballCount == 2) {
             $this->scoreCurrent = $this->pinsPerBall;
             $this->ballCount = 0;
         }
-        
+
         if($this->pinsPerBall == 10 && $this->ballCount == 2) {
             $this->ballCount = 0;
+            $this->flag = 'spare';
         }
 
-        if($this->pinsPerBall > 10 && $this->ballCount == 1) {
+        if($this->pinsPerBall > 10 && $this->ballCount == 1 && $this->flag == 'spare') {
             $this->scoreCurrent += $this->pinsPerBall;
+        }
+
+        if($this->pinsPerBall > 10 && $this->ballCount == 2 && $this->flag == 'strike') {
+            $this->scoreCurrent += $this->pinsPerBall;
+        }
+
+        if($this->pinsPerBall == 10 && $this->ballCount == 1) {
+            $this->ballCount = 0;
+            $this->flag = 'strike';
         }
     }
 
