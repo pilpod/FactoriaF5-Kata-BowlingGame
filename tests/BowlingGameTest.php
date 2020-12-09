@@ -31,19 +31,6 @@ class BowlingGameTest extends TestCase {
 		$this->assertEquals(11, $result);
 	}
 
-	public function test_player_make_a_strike()
-	{
-		//given
-		$game = new BowlingGame;
-		//when
-		$game->roll(10);
-		$game->roll(5);
-		$game->roll(4);
-		$result = $game->score();
-		//then
-		$this->assertEquals(19, $result);
-	}
-
 }
 
 
