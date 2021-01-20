@@ -4,21 +4,16 @@ namespace App;
 
 class BowlingGame {
 
-    
+    private int $score = 0;
 
-    public function __construct()
+    public function Roll(int $pins)
     {
-        
+        $this->score += $pins;
     }
 
-    public function roll(int $pinsDown): void
+    public function Score() : int
     {
-        
-    }
-
-    public function score(): int
-    {
-        return 0;
+        return $this->score;
     }
 
 } 
