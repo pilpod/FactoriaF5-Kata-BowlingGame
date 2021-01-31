@@ -42,9 +42,9 @@ class BowlingGameTest extends TestCase {
 		$game = new BowlingGame();
 		$expected = 12;
 
-		$game->Roll(4);
-		$game->Roll(6);
-		$game->Roll(1);
+		$game->Roll(4); //frame 4
+		$game->Roll(6); //frame 10 -> score 10
+		$game->Roll(1); //frame 0 -> waiting frame
 
 		for ($i=0; $i < 18; $i++) { 
 			$game->Roll(0);
